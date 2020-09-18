@@ -1,5 +1,11 @@
+// Import functions from indexedDb
+import { saveRecord, checkDatabase } from './indexedDb'
+
 let transactions = [];
 let myChart;
+
+// Fetches all the transaction data 
+// Executes populateTotal(), populateTable(), populateChart()
 
 fetch("/api/transaction")
   .then(response => {
@@ -14,7 +20,9 @@ fetch("/api/transaction")
     populateChart();
   });
 
-function populateTotal() {
+  // Function that calculates the total of all existing transactions
+  // The total number displayed on the app is updated
+  function populateTotal() {
   // reduce transaction amounts to a single total value
   let total = transactions.reduce((total, t) => {
     return total + parseInt(t.value);
@@ -24,6 +32,8 @@ function populateTotal() {
   totalEl.textContent = total;
 }
 
+// Creates a table for transactions
+// Table columns are 'name' and 'value'
 function populateTable() {
   let tbody = document.querySelector("#tbody");
   tbody.innerHTML = "";
@@ -40,6 +50,8 @@ function populateTable() {
   });
 }
 
+// This function gets the data and re-arranges it, gets the date of each transaction
+// Creates and displays a chart with the transaction data and transaction date on it's axis
 function populateChart() {
   // copy array and reverse it
   let reversed = transactions.slice().reverse();
@@ -78,6 +90,9 @@ function populateChart() {
   });
 }
 
+// Function get's the inputted transaction values and validates it
+// The new record is poupluated on the page for the client
+// The transaction record is sent to the server
 function sendTransaction(isAdding) {
   let nameEl = document.querySelector("#t-name");
   let amountEl = document.querySelector("#t-amount");
@@ -151,3 +166,5 @@ document.querySelector("#add-btn").onclick = function() {
 document.querySelector("#sub-btn").onclick = function() {
   sendTransaction(false);
 };
+// listen for app coming back online
+window.addEventListener('online', checkDatabase)
