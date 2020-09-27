@@ -8,7 +8,7 @@ const config = {
   },
   output: {
     path: __dirname + '/dist',
-    filename: '[name].bundle.js'
+    filename: 'app.bundle.js'
   },
   module: {
     rules: [
@@ -26,7 +26,7 @@ const config = {
   },
   plugins: [
     new WebpackPwaManifest({
-      name: 'Budget tracker app',
+      name: 'nline-Offline-Budget-Trackers',
       short_name: 'Budget tracker',
       description:
         'An application that allows you make an offline or online budget and download as a desktop webapp',

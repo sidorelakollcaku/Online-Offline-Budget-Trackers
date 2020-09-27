@@ -7,3 +7,19 @@ Budget Tracker is a Progessive Web Application (PWA) that allows for simple onli
 
     HTML / CSS / JavaScript / Node.js / Express / Mongoose / MongoDB / IndexedDB / Webpack / Manifest.json 
 
+
+## Installation
+
+# Requirement
+Prior installation of the following technologies are required.
+ Node.js
+ Mango DB
+
+ ## Dependencies
+ The following dependencies are installed when you run npm install
+
+ Express
+ Mongoose
+ Morgan
+ Compression
+
